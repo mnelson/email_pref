@@ -17,11 +17,10 @@ Jeweler::Tasks.new do |gem|
   gem.name = "email_pref"
   gem.homepage = "http://github.com/mnelson/email_pref"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Email Preferences for AR Objects}
   gem.email = "mike@mikeonrails.com"
   gem.authors = ["Mike Nelson"]
-  # dependencies defined in Gemfile
+  gem.files = Dir["{lib}/**/*", "{app}/**/*", "{config}/**/*"]
 end
 Jeweler::RubygemsDotOrgTasks.new
 

@@ -1,0 +1,9 @@
+<%= form_for @email_preference do |f| %>
+  <% unless @email_preference.errors.empty? %>
+    <div class="errors">
+      <%= email_pref_short_errors(@email_preference) %>
+    </div>
+  <% end %>
+  <%= render '/email_pref/email_preferences/edit', :form => f %>
+  <%= f.submit 'Update Preferences' %>
+<% end %>
