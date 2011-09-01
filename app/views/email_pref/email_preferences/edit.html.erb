@@ -1,4 +1,4 @@
-<%= form_for @email_preference do |f| %>
+<%= form_for @email_preference, :as => :email_preference, :url => email_preference_path do |f| %>
   <% unless @email_preference.errors.empty? %>
     <div class="errors">
       <%= email_pref_short_errors(@email_preference) %>

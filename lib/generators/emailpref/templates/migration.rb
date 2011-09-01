@@ -3,7 +3,7 @@ class CreateEmailPreferences < ActiveRecord::Migration
     create_table :email_preferences, :force => true do |t|
       t.references  :emailable, :polymorphic => true
       t.text        :settings
-      t.boolean     :unsubscribe_all
+      t.boolean     :unsubscribe_all, :default => false
       t.string      :type
       
       t.timestamps

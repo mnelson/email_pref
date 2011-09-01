@@ -1,4 +1,5 @@
 <% unsubscribe_col = form.object.class.has_unsubscribe_column? %>
+
 <div class="email_preferences">
   <ul>
     <% form.object.class.keys.each do |key| %>
@@ -10,6 +11,7 @@
     <% if unsubscribe_col %>
       <li class="unsubscribe">
         <%= form.check_box :unsubscribe_all, :id => 'unsubscribe_all' %>
+        <%= form.label :unsubscribe_all, form.object.class.describe(:unsubscribe_all) %>
       </li>
     <% end %>
   </ul>
@@ -17,23 +19,25 @@
 
 <% if unsubscribe_col %>
   <script type="text/javascript">
-    $('#unsubscribe_all').click(function(){
-      checked = $(this).is(':checked'); 
-      if(checked) {
-        if(confirm('Are you sure you want to unsubscribe from all emails?')){
-          $('.email_preferences input').attr('checked', false);
-          $(this).attr('checked', true);
+    if(typeof jQuery != 'undefined'){
+      $('#unsubscribe_all').click(function(){
+        checked = $(this).is(':checked'); 
+        if(checked) {
+          if(confirm('Are you sure you want to unsubscribe from all emails?')){
+            $('.email_preferences input[type="checkbox"]').attr('checked', false);
+            $(this).attr('checked', true);
+          }
+        } else {
+          $('.email_preferences input[type="checkbox"]').attr('checked', true);
+          $(this).attr('checked', false);
         }
-      } else {
-        $('.email_preferences input').attr('checked', true);
-        $(this).attr('checked', false);
-      }
-    });
+      });
   
-    $('.email_preferences input').click(function(){
-      if($(this).attr('id') != 'unsubscribe_all' && $(this).is(':checked')){
-        $('#unsubscribe_all').attr('checked', false);
-      }
-    });
+      $('.email_preferences input[type="checkbox"]').click(function(){
+        if($(this).attr('id') != 'unsubscribe_all' && $(this).is(':checked')){
+          $('#unsubscribe_all').attr('checked', false);
+        }
+      });
+    }
   </script>
 <% end %>

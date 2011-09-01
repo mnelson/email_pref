@@ -8,7 +8,7 @@ module EmailPref
     
     module ClassMethods
       
-      def has_email_preferences(klazz = 'EmailPreference')
+      def has_email_preferences(klazz = '::EmailPref::EmailPreference')
         
         has_one :email_preference, :as => :emailable, :class_name => klazz.to_s, :dependent => :destroy
         after_create :create_email_preference
