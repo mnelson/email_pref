@@ -6,10 +6,15 @@ class EmailPref::EmailPreferencesController < ApplicationController
   
   def update
     if @email_preference.update_attributes(params[:email_preference])
-      redirect_to @email_preference.emailable
+      redirect_to @email_preference.emailable, :notice => 'You have successfully updated your email preferences.'
     else
       render :action => 'edit'
     end
+  end
+  
+  def unsubscribe
+    @email_preference.unsubscribe_all!
+    redirect_to @email_preference.emailable, :notice => 'You have successully been unsubscribed.'
   end
   
   
