@@ -13,7 +13,7 @@ class EmailPref::EmailPreferencesController < ApplicationController
   end
   
   def unsubscribe
-    @email_preference.unsubscribe_all!
+    @email_preference.unsubscribe!
     redirect_to @email_preference.emailable, :notice => 'You have successully been unsubscribed.'
   end
   

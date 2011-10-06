@@ -9,7 +9,7 @@ module EmailPref
     after_initialize :construct_settings
     
     def self.keys
-      [:marketing, :contact, :reset]
+      []
     end
     
     def self.has_unsubscribe_column?
