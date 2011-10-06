@@ -20,8 +20,8 @@ module EmailPref
     
     def filter_recipients(options)
       return if options[:permit].blank?
-      puts options.to_yaml.gsub("\n", '<br />')
-      options.merge!(:to => [options[:to] || options['to']].flatten.select{|r| !r.respond_to?(:can_email?) || r.can_email?(options[:permit]) }.compact)
+      permit = options.delete(:permit)
+      options.merge!(:to => [options[:to] || options['to']].flatten.select{|r| !r.respond_to?(:can_email?) || r.can_email?(permit) }.compact)
     end
     
   end
